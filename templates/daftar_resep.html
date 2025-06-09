@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Resep</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600">📘 Buku Resep</h1>
+    <div class="space-x-4">
+      <a href="/logout" class="text-red-500 hover:underline">Logout</a>
+    </div>
+  </nav>
+
+  <div class="justify-between max-w-3xl mx-auto mt-6 mb-2 p-4 flex">
+    <a href="/manajemen_resep" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">kembali</a>
+    <a href="/tambah_resep" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Buat Resep</a>
+  </div>
+
+  <main class="max-w-3xl mx-auto mt-2 p-4 bg-white shadow rounded">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">📋 Semua Resep</h2>
+     {% if daftar_resep %}
+        {% for resep in daftar_resep %}
+        <ul class="space-y-3">
+            <li class="border-b pb-2">
+                <br>
+                <a class="text-lg text-gray-800 font-medium">{{resep.judul_resep}}</a>
+                <br>
+                <br>
+                <a href="/detail_resep/{{resep.id}}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">lihat</a>
+            </li>
+        </ul>
+        {% endfor %}
+    {%else%}
+        <h3 class="text-center text-gray-500">belum ada resep</h3>
+    {% endif %}
+  </main>
+
+</body>
+</html>

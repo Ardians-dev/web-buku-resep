@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Resep</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600">📘 Buku Resep</h1>
+    <div class="space-x-4">
+      <a href="/logout" class="text-red-500 hover:underline">Logout</a>
+    </div>
+  </nav>
+
+  <div class="justify-between max-w-3xl mx-auto mt-6 mb-2 p-4 flex">
+    <a href="/daftar_resep" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">kembali</a>
+  </div>
+
+  <main class="max-w-3xl mx-auto mt-2 p-6 bg-white shadow rounded">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Buat Resep Baru</h2>
+
+    <form action="/tambah_resep" method="POST" class="space-y-4">
+      <div>
+        <label for="title" class="block text-sm font-medium text-gray-700">Judul Resep</label>
+        <input type="text" name="judul_resep" id="title" required class="mt-1 w-full p-2 border rounded" placeholder="Contoh: Nasi Goreng Spesial">
+      </div>
+
+      <div>
+        <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+        <textarea name="deskripsi_resep" id="description" rows="2" class="mt-1 w-full p-2 border rounded" placeholder="Deskripsi singkat resep..." required></textarea>
+      </div>
+
+      <div>
+        <label for="ingredients" class="block text-sm font-medium text-gray-700">Bahan-bahan</label>
+        <textarea name="bahan_resep" id="ingredients" rows="3" class="mt-1 w-full p-2 border rounded" placeholder="Pisahkan per baris, contoh:&#10;- Nasi putih&#10;- Telur..." required></textarea>
+      </div>
+
+      <div>
+        <label for="steps" class="block text-sm font-medium text-gray-700">Langkah-langkah</label>
+        <textarea name="langkah_langkah" id="steps" rows="4" class="mt-1 w-full p-2 border rounded" placeholder="Langkah memasak, pisahkan per baris..." required></textarea>
+      </div>
+
+      <div>
+        <label for="steps" class="block text-sm font-medium text-gray-700">Diposting oleh</label>
+        <textarea name="diposting_oleh" id="steps" rows="4" class="mt-1 w-full p-2 border rounded" placeholder="Langkah memasak, pisahkan per baris..." required></textarea>
+      </div>
+
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Tambah Resep</button>
+    </form>
+  </main>
+
+</body>
+</html>

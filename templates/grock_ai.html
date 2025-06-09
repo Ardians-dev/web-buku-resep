@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat dengan AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { overscroll-behavior: none; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans flex flex-col min-h-screen">
+
+  <div class="max-w-2xl w-full mx-auto flex flex-col flex-1 overflow-hidden">
+
+     <div class="fixed top-0 left-0 w-full bg-white border-t border-gray-300 justify-between flex">
+            <h2 class="text-2xl font-bold text-blue-600 p-4">Chat AI</h2>
+            <a href="/manajemen_resep" class="bg-blue-500 text-white mr-2 mt-2 mb-4 pr-2 pt-2 pl-2 pb-2 rounded hover:bg-blue-600">kembali</a>
+     </div>
+
+    <p class=" w-full fixed bg-red-100 border-t border-red-300 justify-between mt-16 p-2">chat disimpan secara sementara, chat juga bsa dibaca oleh pengguna lain, harap bijak dalam berkomunikasi!</p>
+
+    <div id="chat-area" class="flex-1 px-4 pb-32 overflow-y-auto space-y-3 mt-40">
+      {% for msg in chat_history %}
+        <div class="msg {{ msg.role }} flex {% if msg.role == 'user' %}justify-end{% else %}justify-start{% endif %}">
+          <div class="max-w-[80%] px-4 py-3 rounded-2xl shadow 
+            {% if msg.role == 'user' %}
+              bg-blue-500 text-white text-left
+            {% else %}
+              bg-blue-100 text-gray-800 text-left
+            {% endif %}">
+            <p class="text-sm font-medium mb-0 font-bold opacity-80">
+              {{ 'Kamu' if msg.role == 'user' else 'AI' }}
+            </p>
+            <p class="text-sm -mt-4 leading-relaxed whitespace-pre-line break-words">
+              {{ msg.content }}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <form method="POST" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300">
+      <div class="max-w-2xl mx-auto p-4 flex gap-2 items-center">
+        <input 
+          type="text" 
+          name="message" 
+          placeholder="Ketik pesan kamu..." 
+          required 
+          autofocus 
+          class="flex-1 p-3 text-sm rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+        <button 
+          type="submit" 
+          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-sm"
+        >
+          Kirim
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+  <script>
+    const chatArea = document.getElementById("chat-area");
+    chatArea.scrollTop = chatArea.scrollHeight;
+  </script>
+
+</body>
+</html>

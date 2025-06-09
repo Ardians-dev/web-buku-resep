@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Resep</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600">📘 Buku Resep</h1>
+    <div class="space-x-4">
+      <a href="/logout_user" class="text-red-500 hover:underline">Logout</a>
+    </div>
+  </nav>
+
+  <div class="justify-between max-w-3xl mx-auto mt-6 mb-2 p-4 flex">
+    <a href="/detail_resep/{{resep.id}}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Batal edit</a>
+  </div>
+
+  <main class="max-w-3xl mx-auto mt-2 p-6 bg-white shadow rounded">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Edit Resep</h2>
+
+    <form action="/edit/{{resep.id}}" method="POST" class="space-y-4">
+      <div>
+        <label for="title" class="block text-sm font-medium text-gray-700">Judul Resep</label>
+        <input type="text" name="judul_resep" id="title" value="{{resep_asli.judul_resep}}" required class="mt-1 w-full p-2 border rounded">
+      </div>
+
+      <div>
+        <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+        <textarea name="deskripsi_resep" id="description" rows="2" class="mt-1 w-full p-2 border rounded" required>{{resep_asli.deskripsi_resep}}</textarea>
+      </div>
+
+      <div>
+        <label for="ingredients" class="block text-sm font-medium text-gray-700">Bahan-bahan</label>
+        <textarea name="bahan_resep" id="ingredients" rows="3" class="mt-1 w-full p-2 border rounded" required>{{resep_asli.bahan_resep}}</textarea>
+      </div>
+
+      <div>
+        <label for="steps" class="block text-sm font-medium text-gray-700">Langkah-langkah</label>
+        <textarea name="langkah_langkah" id="steps" rows="4" class="mt-1 w-full p-2 border rounded" required>{{resep_asli.langkah_langkah}}</textarea>
+      </div>
+
+      <div>
+        <label for="steps" class="block text-sm font-medium text-gray-700">Diposting_oleh</label>
+        <textarea name="diposting_oleh" id="steps" rows="4" class="mt-1 w-full p-2 border rounded" required>{{resep_asli.diposting_oleh}}</textarea>
+      </div>
+
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Simpan Perubahan</button>
+    </form>
+  </main>
+
+</body>
+</html>

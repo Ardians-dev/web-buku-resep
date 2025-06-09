@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Resep</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600">📘 Buku Resep</h1>
+    <div class="space-x-4">
+      <a href="/logout" class="text-red-500 hover:underline">Logout</a>
+    </div>
+  </nav>
+
+  <div class="justify-between max-w-3xl mx-auto mt-6 mb-2 p-4 flex">
+    <a href="/daftar_resep" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">kembali</a>
+  </div>
+
+  <main class="max-w-3xl mx-auto mt-2 p-4 bg-white shadow rounded">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b">{{detaill_resep.judul_resep}}</h2>
+
+      <p class="text-gray-600 mb-2">
+      <span class="font-semibold">Deskripsi:</span><br>
+      {{detaill_resep.deskripsi_resep}}
+      </p>
+
+      <p class="text-gray-600 mb-2">
+      <span class="font-semibold">Bahan-bahan:</span><br>
+      {{detaill_resep.bahan_resep}}
+      </p>
+
+      <p class="text-gray-600 mb-6">
+      <span class="font-semibold">Langkah-langkah:</span><br>
+      {{detaill_resep.langkah_langkah}}
+      </p>
+
+      <p class="border-t text-gray-600 mb-6">
+      <span class="font-semibold">Diposting oleh:</span><br>
+      {{detaill_resep.diposting_oleh}}
+      </p>
+
+      {% if detaill_resep.user_id == current_user.id %}
+        <div class="flex justify-between items-center">
+        <a href="/edit/{{ detaill_resep.id }}" class="bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-500">Edit Resep</a>
+
+        <a href="/hapus/{{ detaill_resep.id }}" class="bg-red-400 text-white px-4 py-2 rounded hover:bg-red-500"
+        onclick="return confirm('Yakin ingin menghapus catatan ini?');">
+        Hapus
+        </a>
+      </div>
+      {% endif %}
+  </main>
+  
+</body>
+</html>
